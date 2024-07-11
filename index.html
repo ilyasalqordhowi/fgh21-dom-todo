@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <div class="nav">
+          <div>Tue jan 18 2022</div>
+          <div>3.45 PM</div>
+        </div>
+        <h1>To-do List</h1>
+      </div>
+      <div class="list-date">
+        <div>
+          <div>s</div>
+          <div class="active">24</div>
+          <button class="add-list">+</button>
+        </div>
+        <div>
+          <div>m</div>
+          <div>25</div>
+        </div>
+        <div>
+          <div>t</div>
+          <div>26</div>
+        </div>
+        <div>
+          <div>w</div>
+          <div>27</div>
+        </div>
+        <div>
+          <div>t</div>
+          <div>28</div>
+        </div>
+        <div>
+          <div>f</div>
+          <div>29</div>
+        </div>
+        <div>
+          <div>s</div>
+          <div>30</div>
+        </div>
+      </div>
+      <div class="list" id="list">
+        <div class="list-item">
+          <div class="item">
+            <input type="checkbox" />
+            <label class="font-item">take out the trash</label>
+          </div>
+          <div class="clock">9:00 AM</div>
+        </div>
+        <div class="list-item">
+          <div class="item">
+            <input type="checkbox" />
+            <label class="font-item">do homework</label>
+          </div>
+          <div class="clock">12:00 AM</div>
+        </div>
+        <div class="list-item">
+          <div class="item">
+            <input type="checkbox" />
+            <label class="font-item">go to grocey store</label>
+          </div>
+          <div class="clock">1:00 PM</div>
+        </div>
+        <div class="list-item">
+          <div class="item">
+            <input type="checkbox" />
+            <label class="font-item">run 5 kilometer</label>
+          </div>
+          <div class="clock">4:20 PM</div>
+        </div>
+        <div class="list-item">
+          <div class="item">
+            <input type="checkbox" />
+            <label class="font-item">load the dishwasher</label>
+          </div>
+          <div class="clock">9:00 PM</div>
+        </div>
+        <div class="list-item">
+          <div class="item">
+            <input type="checkbox" />
+            <label class="font-item">Take out the trash</label>
+          </div>
+          <div class="clock">9:00 PM</div>
+        </div>
+      </div>
+    </div>
+    <div class="popup">
+      <div class="container-popup">
+        <h1>menambahkan data</h1>
+        <input type="text" />
+        <button type="button">SAVE</button>
+      </div>
+    </div>
+    <script>
+      const listData = document.getElementById("list");
+
+      const data = [
+        {
+          text: "take out the trash",
+          finish: true,
+        },
+        {
+          text: "do homework",
+          finish: true,
+        },
+        {
+          text: "go to grocey store",
+          finish: true,
+        },
+        {
+          text: "run 5 kilometer",
+          finish: true,
+        },
+        {
+          text: "load the dishwasher",
+          finish: true,
+        },
+        {
+          text: "Take out the trash",
+          finish: true,
+        },
+      ];
+      data.forEach((item, index) => {
+        const listA = document.createElement("div");
+        const check = document.createElement("input");
+        check.type = "checkbox";
+        listA.id = "oke" + index + -1;
+        if (item.checked) {
+          check.checked = true;
+        }
+        const labelItem = document.createElement("label");
+      });
+    </script>
+  </body>
+</html>
