@@ -104,6 +104,11 @@ body {
   border-radius: 10px;
   padding: 10px;
 }
+
+.popup.hide {
+  display: none;
+}
+
 .popup .container-popup button {
   cursor: pointer;
 }
