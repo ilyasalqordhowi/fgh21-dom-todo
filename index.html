@@ -64,7 +64,7 @@
       <!-- </div> -->
     </div>
     <div class="popup hide">
-      <form class="container-popup">
+      <form id="formDAta" class="container-popup">
         <h1>menambahkan data</h1>
         <input type="text" name="text" />
         <button type="submit">SAVE</button>
@@ -75,23 +75,21 @@
 
       const overlay = document.getElementsByClassName("popup");
       const form = overlay.item(0).getElementsByTagName("form").item(0);
-
+      
       const addBtn = document.getElementById("button");
       addBtn.addEventListener("click", () => {
         overlay.item(0).classList.toggle("hide");
       });
-
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-      });
-
-      const data = [
+      
+      let data = [
         {
           text: "take out the trash",
+          times: new Date( ).getTime(),
           finish: true,
         },
         {
           text: "do homework",
+          times: new Date().getTime(),
           finish: true,
         },
         {
@@ -101,38 +99,71 @@
         },
         {
           text: "run 5 kilometer",
+          times: new Date().getTime(),
           finish: true,
         },
         {
           text: "load the dishwasher",
+          times: new Date().getTime(),
           finish: true,
         },
         {
           text: "Take out the trash",
+          times: new Date().getTime(),
           finish: true,
         },
       ];
-      data.forEach((item, index) => {
-        const listA = document.createElement("div");
-        const check = document.createElement("input");
-        const time = document.createElement("div")
-        check.type = "checkbox";
-        listA.id = "oke" + index + 1;
-        if (item.checked) {
-          check.checked = true;
+      
+        const dataLocal = localStorage.getItem("data")
+        // console.log(dataLocal)
+        if(dataLocal !== null){
+          data = JSON.parse(dataLocal)
         }
-        const labelList = document.createElement("label");
-        labelList.textContent = item.text;
-        labelList.htmlFor = listA.id;
-
-
-        listA.appendChild(check);
-        listA.appendChild(labelList);
-        listData.appendChild(listA);
+         
+      
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const input = event.target.text.value
+        data.push({
+          text: input,
+          times: new Date().getTime(),
+          finish: true,
+        })
+        newData()
+        window.localStorage.setItem("data", JSON.stringify(data))
+      
       });
+      function newData() {
+        listData.innerHTML=''
+        data.forEach((item, index) => {
+          const listA = document.createElement("div");
+          const check = document.createElement("input");
+          const time = document.createElement("div")
+          check.type = "checkbox";
+          check.id = "oke" + index + 1;
+          if (item.checked) {
+            check.checked = true;
+          }
+          const labelList = document.createElement("label");
+          const jam = new Date(item.times).getHours();
+          const menit = new Date(item.times).getMinutes();
+          time.textContent = jam +":" + menit
+          labelList.textContent = item.text;
+          labelList.htmlFor = check.id;
+
+          
+          listA.appendChild(check); 
+          listA.appendChild(labelList);
+          listA.appendChild(time);
+          listData.appendChild(listA);
+        });
+        //
+        
+      }
       form.addEventListener("submit", () => {
         overlay.item(0).classList.toggle("hide");
       });
+      newData()
     </script>
   </body>
 </html>
