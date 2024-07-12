@@ -6,7 +6,7 @@ body {
 }
 .container {
   width: 500px;
-  height: 700px;
+
   padding: 10px;
   border-radius: 20px;
   background-color: rgba(255, 254, 253, 0.873);
@@ -83,7 +83,11 @@ label #font-item {
   padding: 10px;
   background-color: beige;
 }
-.add-list {
+.allButton {
+  display: flex;
+  gap: 30px;
+}
+button {
   display: flex;
   flex-direction: column;
   width: 50px;
@@ -96,7 +100,13 @@ label #font-item {
   cursor: pointer;
   margin-top: 30px;
 }
+button:hover {
+  background-color: rgba(127, 255, 212, 0.362);
+}
 .add-list img {
+  width: 100%;
+}
+.add-remove img {
   width: 100%;
 }
 .popup {

@@ -15,11 +15,16 @@
         </div>
         <h1>To-do List</h1>
       </div>
+      <div class="allButton">
       <button class="add-list" id="button">
         <img src="./assets/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" />
       </button>
+      <button class="add-remove" id="button-remove">
+        <img src="./assets/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png">
+      </button>
+      </div>
       <div class="list" id="list">
-        <!-- <div class="list-item">
+        <!-- <div class="lis t-item">
           <div class="item">
             <input type="checkbox" />
             <label class="font-item">take out the trash</label>
@@ -119,9 +124,11 @@
         if(dataLocal !== null){
           data = JSON.parse(dataLocal)
         }
-         
-      
-      form.addEventListener("submit", (event) => {
+
+        
+        
+        // buat munculin
+        form.addEventListener("submit", (event) => {
         event.preventDefault();
         const input = event.target.text.value
         data.push({
@@ -131,12 +138,13 @@
         })
         newData()
         window.localStorage.setItem("data", JSON.stringify(data))
-      
+        
       });
       function newData() {
         listData.innerHTML=''
         data.forEach((item, index) => {
           const listA = document.createElement("div");
+          
           const check = document.createElement("input");
           const time = document.createElement("div")
           check.type = "checkbox";
@@ -144,6 +152,11 @@
           if (item.checked) {
             check.checked = true;
           }
+          const removeAll = document.getElementsByClassName("add-remove")
+          const remove = document.getElementById("button-remove")
+          remove.addEventListener("click", () => {
+           listA.remove()
+        });
           const labelList = document.createElement("label");
           const jam = new Date(item.times).getHours();
           const menit = new Date(item.times).getMinutes();
